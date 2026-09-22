@@ -7,7 +7,9 @@ from dotenv import load_dotenv
 from groq import Groq
 
 load_dotenv()
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+import streamlit as st
+api_key = os.environ.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
 # Load the embedding model once (small, fast, runs locally on CPU)
 embedder = SentenceTransformer("all-MiniLM-L6-v2")

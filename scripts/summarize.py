@@ -4,7 +4,10 @@ from dotenv import load_dotenv
 from groq import Groq 
 
 load_dotenv()  # reads the .env file and loads GROQ_API_KEY into the environment
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+
+import streamlit as st
+api_key = os.environ.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
 def load_transcript(json_path):
     with open(json_path, "r", encoding="utf-8") as f:
