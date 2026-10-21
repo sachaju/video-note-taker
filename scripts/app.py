@@ -3,6 +3,7 @@ import sys
 import os
 import glob
 
+os.makedirs("data", exist_ok=True)
 sys.path.append("scripts")
 
 from download_audio import download_audio
@@ -35,8 +36,15 @@ if "actions" not in st.session_state:
 if "index" not in st.session_state:
     st.session_state.index = None
 
+
 def find_latest_wav(folder="data"):
-    files = glob.glob(f"{folder}/*.wav")
+    files = glob.glob(os.path.join(folder, "*.wav"))
+
+    if not files:
+        raise FileNotFoundError(
+            "No WAV audio file was found in the data folder."
+        )
+
     return max(files, key=os.path.getctime)
 
 def clear_previous_data(folder="data"):
