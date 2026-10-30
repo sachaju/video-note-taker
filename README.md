@@ -22,6 +22,20 @@ Turn long videos, lectures, and meetings into structured notes — automatically
 5. **RAG Q&A** — Transcript segments are embedded with `sentence-transformers` and indexed with `FAISS`; questions retrieve relevant segments and the summary, then an LLM generates an answer grounded in that context.
 6. **UI** — The application is served through Streamlit.
 
+## Application Screenshots
+
+### Home page
+
+![Home page](screenshots/home_page.png)
+
+### Generated summary
+
+![Summary](screenshots/summary.png)
+
+### RAG Q&A
+
+![Chat interface](screenshots/chat.png)
+
 ## Tech stack
 
 Python · faster-whisper · Groq API · sentence-transformers · FAISS · Streamlit · yt-dlp · ffmpeg
